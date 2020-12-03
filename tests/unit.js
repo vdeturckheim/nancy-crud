@@ -16,7 +16,7 @@ it('should return the list of posts', async () => {
 });
 
 it('should return a single post', async () => {
-    // hello world
+    // hello world 2
     const response = await Supertest(app).get('/posts/1');
     expect(response.statusCode).to.equal(200);
     expect(response.body).to.equal({
