@@ -12,4 +12,15 @@ app.get('/posts', (req, res, next) => {
     });
 });
 
+app.get('/posts/:id', (req, res, next) => {
+
+    const postId = req.params.id;
+
+    DB.all('SELECT * FROM POSTS WHERE ID = ?', [postId], (err, rows) => {
+        if (err) return next(err);
+
+        res.json(rows);
+    });
+});
+
 app.listen(8080);
