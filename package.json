@@ -1,0 +1,15 @@
+{
+  "name": "nancy",
+  "version": "1.0.0",
+  "description": "un super duper projekt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moi, mon ego, et moi meme",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.0"
+  }
+}
