@@ -41,4 +41,12 @@ app.post('/posts', (req, res, next) => {
         });
 });
 
+app.delete('/posts/:id', (req, res, next) => {
+
+    DB.run('DELETE FROM POSTS WHERE ID = ?', [req.params.id], (err) => {
+        if (err) return next(err);
+        res.end('ok\n');
+    });
+});
+
 app.listen(8080);
