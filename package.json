@@ -4,7 +4,8 @@
   "description": "un super duper projekt",
   "main": "index.js",
   "scripts": {
-    "test": "lab tests"
+    "test": "lab tests",
+    "start": "node server.js"
   },
   "author": "moi, mon ego, et moi meme",
   "license": "ISC",
