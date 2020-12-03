@@ -5,6 +5,7 @@ const app = Express();
 const DB = require('./db');
 
 app.use(BP.json());
+
 app.get('/posts', (req, res, next) => {
 
     DB.all('SELECT * FROM POSTS', (err, rows) => {
@@ -23,6 +24,13 @@ app.get('/posts/:id', (req, res, next) => {
 
         res.json(rows);
     });
+});
+
+app.post('/posts', (req, res, next) => {
+
+    const body = req.body;
+    console.log(body);
+    res.end('ok\n');
 });
 
 app.listen(8080);
