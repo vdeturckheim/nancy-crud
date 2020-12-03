@@ -28,9 +28,17 @@ app.get('/posts/:id', (req, res, next) => {
 
 app.post('/posts', (req, res, next) => {
 
-    const body = req.body;
-    console.log(body);
-    res.end('ok\n');
+    const body = req.body; // { title: string, content: string }
+    const title = body.title;
+    const content = body.content;
+    if (typeof title !== 'string' || typeof content !== 'string') {
+        return next(new Error('invalid request'));
+    }
+    DB.run('INSERT INTO POSTS (TITLE, CONTENT) VALUES (?, ?)',
+        [title, content], (err) => {
+            if (err) return next(err);
+            res.end('ok\n');
+        });
 });
 
 app.listen(8080);
