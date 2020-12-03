@@ -27,7 +27,7 @@ app.get('/posts/:id', (req, res, next) => {
             return next(new Error('nothing to see here'));
         }
 
-        res.json(rows);
+        res.json(rows[0]);
     });
 });
 
