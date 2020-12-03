@@ -41,6 +41,27 @@ app.post('/posts', (req, res, next) => {
         });
 });
 
+app.put('/posts/:id', (req, res, next) => {
+
+    DB.all('SELECT * FROM POSTS WHERE ID = ?', [req.params.id], (err, rows) => {
+        if (err) return next(err);
+        if (rows.length !== 1) {
+            return new Error('no post with id ' + req.params.id);
+        }
+        const body = req.body; // { title: string, content: string }
+        const title = body.title;
+        const content = body.content;
+        if (typeof title !== 'string' || typeof content !== 'string') {
+            return next(new Error('invalid request'));
+        }
+        DB.run('UPDATE POSTS SET TITLE = ?, CONTENT = ? WHERE ID = ?;', [title, content, req.params.id],
+            (err) => {
+                if (err) return next(err);
+                res.end('ok\n');
+        })
+    });
+});
+
 app.delete('/posts/:id', (req, res, next) => {
 
     DB.run('DELETE FROM POSTS WHERE ID = ?', [req.params.id], (err) => {
