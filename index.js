@@ -22,6 +22,11 @@ app.get('/posts/:id', (req, res, next) => {
     DB.all('SELECT * FROM POSTS WHERE ID = ?', [postId], (err, rows) => {
         if (err) return next(err);
 
+        if (rows.length === 0) {
+            res.status(404);
+            return next(new Error('nothing to see here'));
+        }
+
         res.json(rows);
     });
 });
