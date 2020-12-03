@@ -4,7 +4,7 @@
   "description": "un super duper projekt",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab tests"
   },
   "author": "moi, mon ego, et moi meme",
   "license": "ISC",
@@ -12,5 +12,9 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "@hapi/code": "^8.0.2",
+    "@hapi/lab": "^24.1.0"
   }
 }

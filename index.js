@@ -75,4 +75,4 @@ app.delete('/posts/:id', (req, res, next) => {
     });
 });
 
-app.listen(8080);
+module.exports.app = app;
